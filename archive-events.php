@@ -2,12 +2,11 @@
 get_header();
 
 $args_t = [
-  'taxonomy'  => 'events_tags',
-  'hide_empty'    => true, 
-  'pad_counts'  => true
+  'taxonomy'    => 'events_tags',
+  'hide_empty'  => true,
+  'parent'      => 0
 ];
 $terms = get_terms($args_t);
-$terms = wp_list_filter( $terms, array('parent' => 0) );
 
 // пройдемся по терминам верхнего уровня
 if ($terms) {
