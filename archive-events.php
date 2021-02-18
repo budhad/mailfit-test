@@ -39,9 +39,9 @@ get_footer();
 
 // functions tab calendar events
 
-function get_events_by_tags(WP_Term $cat = null) {
-  $d = strtotime("+1 day");
-  $now = date('Y-m-d 00:00:00', $d);
+function get_events_by_tags(WP_Term $cat) {
+  $tomorrow = strtotime("+1 day");
+  $tomorrow = date('Y-m-d 00:00:00', $tomorrow);
 
   $args_q = [
     'post_type'       => 'events',
@@ -52,8 +52,8 @@ function get_events_by_tags(WP_Term $cat = null) {
       'events_finish' => array(
           'key'       => 'events_finish',
           'type'      => 'DATETIME',
-          'value'     => $now,
-          'compare'   => '>'
+          'value'     => $tomorrow,
+          'compare'   => '>='
       ),
       'events_start' => array(
           'key'     => 'events_start',
